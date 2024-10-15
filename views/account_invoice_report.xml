@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+    <xpath expr="//div[@id='total']" position="after">
+        <div class="row">
+            <div class="col-9 text-right">
+                <strong>Total Kg:</strong>
+            </div>
+            <div class="col-3 text-right">
+                <span t-field="o.total_kg"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-9 text-right">
+                <strong>Total Unidades:</strong>
+            </div>
+            <div class="col-3 text-right">
+                <span t-field="o.total_units"/>
+            </div>
+        </div>
+    </xpath>
+</template>
+</odoo>
