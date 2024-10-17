@@ -12,10 +12,11 @@ class AccountMove(models.Model):
         for move in self:
             total_kg = 0.0
             total_units = 0.0
-            for line in move.invoice_line_ids:
-                if line.product_uom_id.name.lower() == "kg":
-                    total_kg += line.quantity
-                elif line.product_uom_id.name.lower() == "unidad(es)":
-                    total_units += line.quantity
-            move.total_kg = total_kg
-            move.total_units = total_units
+            if move.invoice_line_ids:
+                for line in move.invoice_line_ids:
+                    if line.product_uom_id.name.lower() == "kg":
+                        total_kg += line.quantity
+                    elif line.product_uom_id.name.lower() == "unidad(es)":
+                        total_units += line.quantity
+                move.total_kg = total_kg
+                move.total_units = total_units
